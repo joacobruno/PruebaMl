@@ -17,8 +17,8 @@ public class ItemService {
     }
     
     public CuponResponse getAffordableItems(List<String> ids, Double amount){
-        ItemRepository.getInstance().addFavouriteItems(ids);
         Map<String, Double> idPriceMap = fetchPrices(ids);
+        ItemRepository.getInstance().addFavouriteItems(new ArrayList<>(idPriceMap.keySet()));
         HashMap<String,Double> orderIdPriceMap = orderProductIdMinToMaxValue(idPriceMap);
         return substractValuesAmount(orderIdPriceMap,amount);
     }
@@ -31,7 +31,7 @@ public class ItemService {
     
     private List<StatsResponse> getTopFiveItems(Map<String, Integer> itemsStats) {
         List<StatsResponse> statsResponseList = new ArrayList<>();
-        List<Map.Entry<String, Integer>> topFiveItems = itemsStats.entrySet().stream().limit(5).toList();
+        List<Map.Entry<String, Integer>> topFiveItems = itemsStats.entrySet().stream().limit(5).collect(Collectors.toList());
         for(Map.Entry<String, Integer> entry : topFiveItems){
             StatsResponse statsResponse = new StatsResponse(entry.getKey(),entry.getValue());
             statsResponseList.add(statsResponse);
