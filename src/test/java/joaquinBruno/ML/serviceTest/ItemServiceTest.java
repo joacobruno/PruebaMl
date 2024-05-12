@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import joaquinBruno.ML.builder.ItemServiceBuilder;
@@ -18,14 +17,17 @@ import joaquinBruno.ML.model.StatsResponse;
 import joaquinBruno.ML.repository.ItemRepository;
 import joaquinBruno.ML.service.ItemService;
 import joaquinBruno.ML.service.PriceClient;
+import org.mockito.Mock;
+import org.springframework.boot.test.context.SpringBootTest;
 
+@SpringBootTest
 public class ItemServiceTest {
-    
+
+    @Mock
     private PriceClient priceClient;
     
-    @Before
+    @BeforeEach
     public void setUp() {
-        priceClient = mock(PriceClient.class);
         when(priceClient.getItemPrice("item1")).thenReturn(Optional.of(50.0));
         when(priceClient.getItemPrice("item2")).thenReturn(Optional.of(30.0));
         when(priceClient.getItemPrice("item3")).thenReturn(Optional.of(20.0));
@@ -46,7 +48,7 @@ public class ItemServiceTest {
     @Test
     public void testGetStats() {
         
-        List<String> favouriteItems = List.of("item1", "item2", "item3");
+        List<String> favouriteItems = List.of("item1", "item2", "item3","item1","item1","item3");
         ItemRepository.getInstance().addFavouriteItems(favouriteItems);
         
         ItemService itemService =  ItemServiceBuilder.anItemService().withPriceClient(priceClient).build();
@@ -54,9 +56,9 @@ public class ItemServiceTest {
         List<StatsResponse> statsResponses = itemService.getStats();
         
         assertEquals(3, statsResponses.size());
-        assertEquals("item3", statsResponses.get(0).getItemId());
-        assertEquals("item2", statsResponses.get(1).getItemId());
-        assertEquals("item1", statsResponses.get(2).getItemId());
+        assertEquals("item1", statsResponses.get(0).getItemId());
+        assertEquals("item3", statsResponses.get(1).getItemId());
+        assertEquals("item2", statsResponses.get(2).getItemId());
         assertNotEquals("ItemTest",statsResponses.get(0).getItemId());
     }
 }

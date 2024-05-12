@@ -10,5 +10,5 @@ import lombok.Setter;
 public class CuponRequest {
     @JsonProperty("item_ids")
     private List<String> itemIds;
-    private double amount;
+    private Double amount;
 }

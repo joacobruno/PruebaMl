@@ -24,6 +24,9 @@ public class ItemController {
     
     @PostMapping
     public ResponseEntity<CuponResponse> affordableItems(@RequestBody CuponRequest cuponRequest){
+        if (cuponRequest.getItemIds() == null || cuponRequest.getAmount() ==  null) {
+            return ResponseEntity.badRequest().build();
+        }
         CuponResponse cuponResponse = itemService.getAffordableItems(cuponRequest.getItemIds(),cuponRequest.getAmount());
         return ResponseEntity.ok(cuponResponse);
     }
