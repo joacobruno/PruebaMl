@@ -75,7 +75,7 @@ The `ItemController` handles HTTP requests related to items and coupons in the a
 
 ## PreRequisites
 
-- [Java JDK 11] 
-- [Apache Maven]
+- [Java JDK 11](https://adoptopenjdk.net/)
+- [Apache Maven](https://maven.apache.org/)
 
 
