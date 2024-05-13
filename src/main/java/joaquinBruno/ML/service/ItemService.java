@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
+import joaquinBruno.ML.client.PriceClient;
 import joaquinBruno.ML.model.CuponResponse;
 import joaquinBruno.ML.model.StatsResponse;
 import joaquinBruno.ML.repository.ItemRepository;

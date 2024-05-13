@@ -1,4 +1,4 @@
-package joaquinBruno.ML.service;
+package joaquinBruno.ML.client;
 
 import java.util.Optional;
 

@@ -1,7 +1,7 @@
 package joaquinBruno.ML.builder;
 
 import joaquinBruno.ML.service.ItemService;
-import joaquinBruno.ML.service.PriceClient;
+import joaquinBruno.ML.client.PriceClient;
 
 public final class ItemServiceBuilder {
     private PriceClient priceClient;

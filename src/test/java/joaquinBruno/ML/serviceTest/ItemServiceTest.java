@@ -16,7 +16,7 @@ import joaquinBruno.ML.model.CuponResponse;
 import joaquinBruno.ML.model.StatsResponse;
 import joaquinBruno.ML.repository.ItemRepository;
 import joaquinBruno.ML.service.ItemService;
-import joaquinBruno.ML.service.PriceClient;
+import joaquinBruno.ML.client.PriceClient;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
