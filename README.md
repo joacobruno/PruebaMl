@@ -10,6 +10,8 @@ The `ItemController` handles HTTP requests related to items and coupons in the a
 
 ## Usage
 
+Use the following URL to test it : https://sanguine-parsec-422917-m5.rj.r.appspot.com
+
 ### 1. Retrieving Affordable Items
 
 #### Endpoint:
